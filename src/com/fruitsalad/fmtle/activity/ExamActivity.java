@@ -1,32 +1,36 @@
 package com.fruitsalad.fmtle.activity;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.view.KeyEvent;
 import android.view.WindowManager;
 
 import com.fruitsalad.fmtle.R;
 
 public class ExamActivity extends Activity {
-	private View view = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		Intent intent = getIntent();
-		
+		//设置activity覆盖锁屏
 		WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-		layoutParams.flags = WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD;
-		LayoutInflater inflater = LayoutInflater.from(this);
-		view = inflater.inflate(R.layout.settings, null);
-		WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-		windowManager.addView(view, layoutParams);
+		layoutParams.flags = WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
+					| WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;	
+		getWindow().setAttributes(layoutParams);
 		
-		Log.v("create Activity", "created!");
+		setContentView(R.layout.exam);
+		
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		//屏蔽menu键和返回键
+		switch(keyCode) {
+		case KeyEvent.KEYCODE_MENU:
+		case KeyEvent.KEYCODE_BACK:
+			return true;
+		}	
+		return super.onKeyDown(keyCode, event);
 	}
 }

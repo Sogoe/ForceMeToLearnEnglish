@@ -6,6 +6,11 @@
     -->
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
         <!-- API 11 theme customizations can go here. -->
+        
+    </style>
+    
+    <style name="BaseExamActivityTheme" parent="android:Theme.Holo.Light">
+        <item name="android:windowActionBar">false</item>
     </style>
 
 </resources>

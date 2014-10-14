@@ -11,10 +11,17 @@
             backward-compatibility can go here.
         -->
     </style>
+    
+    <style name="BaseExamActivityTheme" parent="android:Theme.Light">
+        
+    </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-
+    
+    <style name="ExamActivityTheme" parent="BaseExamActivityTheme">
+        <item name="android:windowNoTitle">true</item>
+    </style>
 </resources>
