@@ -17,7 +17,7 @@ public class ScreenOnOffReciever extends BroadcastReceiver {
 		}
 
 		if (intent.getAction() == Intent.ACTION_SCREEN_OFF) {
-
+			
 		}
 	}
 }
