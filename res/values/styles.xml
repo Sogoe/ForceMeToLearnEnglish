@@ -23,5 +23,13 @@
     
     <style name="ExamActivityTheme" parent="BaseExamActivityTheme">
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/ExamActivityAnimation</item>
+    </style>
+    
+    <style name="ExamActivityAnimation">
+        <item name="android:activityOpenEnterAnimation">@anim/exam_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/exam_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/exam_enter</item>
+        <item name="android:activityCloseExitAnimation">@anim/exam_exit</item>
     </style>
 </resources>

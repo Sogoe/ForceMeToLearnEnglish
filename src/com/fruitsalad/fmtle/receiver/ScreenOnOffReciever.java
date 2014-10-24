@@ -1,10 +1,10 @@
 package com.fruitsalad.fmtle.receiver;
 
-import com.fruitsalad.fmtle.activity.ExamActivity;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import com.fruitsalad.fmtle.activity.ExamActivity;
 
 public class ScreenOnOffReciever extends BroadcastReceiver {
 

@@ -6,8 +6,9 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.fruitsalad.fmtle.app.ClientApplication"
@@ -29,7 +30,7 @@
         <activity
             android:name="com.fruitsalad.fmtle.activity.ExamActivity"
             android:taskAffinity="com.fruitsalad.fmtle.activity.ExamActivity"
-            android:theme="@style/ExamActivityTheme">
+            android:theme="@style/ExamActivityTheme" >
         </activity>
     </application>
 

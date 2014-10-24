@@ -3,11 +3,14 @@ package com.fruitsalad.fmtle.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.fruitsalad.fmtle.R;
 
-public class ExamActivity extends Activity {
+public class ExamActivity extends Activity implements OnClickListener{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +24,18 @@ public class ExamActivity extends Activity {
 		
 		setContentView(R.layout.exam);
 		
+		
+		
+		initEvents();
 	}
 
+	private void initEvents() {
+		TextView skip = (TextView) findViewById(R.id.skip_text);
+		skip.setOnClickListener(this);
+	}
+	
+	
+	
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		//屏蔽menu键和返回键
@@ -32,5 +45,15 @@ public class ExamActivity extends Activity {
 			return true;
 		}	
 		return super.onKeyDown(keyCode, event);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.skip_text:
+			finish();
+			overridePendingTransition(0, R.anim.exam_exit);
+			break;
+		}
 	}
 }
