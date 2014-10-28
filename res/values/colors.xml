@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-   <color name="tv_press_bg">#50445566</color>
+   <color name="divider_grey">#77989898</color>
+   <color name="choice_fontcolor">#50ddffff</color>
 </resources>

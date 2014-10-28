@@ -30,8 +30,7 @@ public class ExamActivity extends Activity implements OnClickListener{
 	}
 
 	private void initEvents() {
-		TextView skip = (TextView) findViewById(R.id.skip_text);
-		skip.setOnClickListener(this);
+
 	}
 	
 	
@@ -49,11 +48,6 @@ public class ExamActivity extends Activity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.skip_text:
-			finish();
-			overridePendingTransition(0, R.anim.exam_exit);
-			break;
-		}
+		
 	}
 }

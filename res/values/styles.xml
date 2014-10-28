@@ -1,35 +1,49 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
-    
-    <style name="BaseExamActivityTheme" parent="android:Theme.Light">
-        
-    </style>
+
+    <style name="BaseExamActivityTheme" parent="android:Theme.Light"></style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    
+
     <style name="ExamActivityTheme" parent="BaseExamActivityTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowAnimationStyle">@style/ExamActivityAnimation</item>
     </style>
-    
+
     <style name="ExamActivityAnimation">
         <item name="android:activityOpenEnterAnimation">@anim/exam_enter</item>
         <item name="android:activityOpenExitAnimation">@anim/exam_exit</item>
         <item name="android:activityCloseEnterAnimation">@anim/exam_enter</item>
         <item name="android:activityCloseExitAnimation">@anim/exam_exit</item>
     </style>
+
+    <style name="divider">
+        <item name="android:layout_height">0.3dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/divider_grey</item>
+    </style>
+
+    <style name="ChoiceItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/choice_fontcolor</item>
+    </style>
+
 </resources>
