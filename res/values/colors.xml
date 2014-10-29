@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-   <color name="divider_grey">#77989898</color>
-   <color name="choice_fontcolor">#50ddffff</color>
+   <color name="divider_grey">#99989898</color>
+   <color name="choice_fontcolor">#aaddffff</color>
+   <color name="skip_press">#50dfffff</color>
+   <color name="wrong_press">#50ed351e</color>
+   <color name="english_color">#fff7b2</color>
+   <color name="symbol_color">#ddffff</color>
+   <color name="right_press">#501e8f0e</color>
 </resources>

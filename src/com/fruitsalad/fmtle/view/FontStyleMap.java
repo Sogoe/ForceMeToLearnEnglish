@@ -7,6 +7,7 @@ public class FontStyleMap {
 	
 	static {
 		hashMap.put(0, "Gotham_Light.otf");
+		hashMap.put(1, "FZLTXHK_GBK.ttf");
 	}
 	
 	public static String getFontStyle(int index) {

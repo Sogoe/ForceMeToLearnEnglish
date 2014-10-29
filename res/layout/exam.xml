@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fmtle="http://schemas.android.com/apk/res/com.fruitsalad.fmtle"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.ExamActivity" >
 
     <ImageView
+        android:id="@+id/image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="@string/img_des"
@@ -13,38 +15,83 @@
         android:src="@drawable/bg1" />
 
     <LinearLayout
+        android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
         android:orientation="vertical"
-        android:padding="10dp"
-        android:layout_marginBottom="15dp" >
+        android:padding="10dp" >
 
         <include layout="@layout/divider" />
 
         <com.fruitsalad.fmtle.view.CustomTextView
+            android:id="@+id/choice_a"
             style="@style/ChoiceItem"
-            android:text="@string/text_xx" />
+            android:text="@string/text_xx"
+            fmtle:fontStyle="c" />
 
         <include layout="@layout/divider" />
 
         <com.fruitsalad.fmtle.view.CustomTextView
+            android:id="@+id/choice_b"
             style="@style/ChoiceItem"
-            android:text="@string/text_xx" />
+            android:text="@string/text_xx"
+            fmtle:fontStyle="c" />
 
         <include layout="@layout/divider" />
 
         <com.fruitsalad.fmtle.view.CustomTextView
+            android:id="@+id/choice_c"
             style="@style/ChoiceItem"
-            android:text="@string/text_xx" />
+            android:text="@string/text_xx"
+            fmtle:fontStyle="c" />
 
         <include layout="@layout/divider" />
 
         <com.fruitsalad.fmtle.view.CustomTextView
+            android:id="@+id/choice_d"
             style="@style/ChoiceItem"
-            android:text="@string/text_xx" />
+            android:text="@string/text_xx"
+            fmtle:fontStyle="c" />
 
         <include layout="@layout/divider" />
+
+        <com.fruitsalad.fmtle.view.CustomTextView
+            android:id="@+id/skip"
+            style="@style/ChoiceItem"
+            android:background="@drawable/skip_bg"
+            android:gravity="center_horizontal"
+            android:text="@string/exam_skip_str"
+            fmtle:fontStyle="c" />
+
+        <include layout="@layout/divider" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_layout"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <com.fruitsalad.fmtle.view.CustomTextView
+            android:id="@+id/english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_xx"
+            android:textColor="@color/english_color"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <com.fruitsalad.fmtle.view.CustomTextView
+            android:id="@+id/symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/text_xx"
+            android:textColor="@color/symbol_color"
+            android:textSize="23sp" />
     </LinearLayout>
 
 </RelativeLayout>

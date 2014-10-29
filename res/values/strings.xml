@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">Force Me to Learn English</string>
-    <string name="exam_skip_str">Skip >>></string>
+    <string name="exam_skip_str">跳过</string>
     <string name="img_des">This is Image!</string>
     <string name="text_xx">XXX</string>
 

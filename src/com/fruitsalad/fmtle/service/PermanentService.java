@@ -7,6 +7,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.fruitsalad.fmtle.receiver.ScreenOnOffReciever;
+import com.fruitsalad.fmtle.utils.DataBaseHelper;
 
 public class PermanentService extends Service {
 	private static String TAG = "Permanent Service";
@@ -23,7 +24,7 @@ public class PermanentService extends Service {
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		
 		if(recevier == null) {
-			//×¢²á¹ã²¥
+			
 			recevier = new ScreenOnOffReciever();
 			IntentFilter intentFilter = new IntentFilter();
 			intentFilter.addAction(Intent.ACTION_SCREEN_ON);
@@ -33,13 +34,15 @@ public class PermanentService extends Service {
 			Log.v(TAG, "broadcast registered!");
 		}
 		
+		DataBaseHelper.init(getApplicationContext());
+		
 		return Service.START_STICKY;
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		//ÊÍ·Å±äÁ¿
+		//ï¿½Í·Å±ï¿½ï¿½ï¿½
 		unregisterReceiver(recevier);
 		recevier = null;
 		

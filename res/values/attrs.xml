@@ -2,7 +2,8 @@
 <resources>
     <declare-styleable name="CustomTextview">
         <attr name="fontStyle">
-            <enum name="Gotham_Light" value="0" />
+            <enum name="e" value="0" />
+            <enum name="c" value="1" />
         </attr>
     </declare-styleable>
 </resources>
