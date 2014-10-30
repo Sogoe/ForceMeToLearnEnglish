@@ -9,6 +9,7 @@
 
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:name="com.fruitsalad.fmtle.app.ClientApplication"
@@ -16,22 +17,29 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.fruitsalad.fmtle.activity.SettingsActivity" >
+        <activity
+            android:name="com.fruitsalad.fmtle.activity.SettingsActivity"
+            android:theme="@style/ExamActivityTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service android:name="com.fruitsalad.fmtle.service.PermanentService" >
-        </service>
-
         <activity
             android:name="com.fruitsalad.fmtle.activity.ExamActivity"
             android:taskAffinity="com.fruitsalad.fmtle.activity.ExamActivity"
             android:theme="@style/ExamActivityTheme" >
         </activity>
+
+        <receiver android:name="com.fruitsalad.fmtle.receiver.BootCompleteReciever" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.fruitsalad.fmtle.service.PermanentService" >
+        </service>
     </application>
 
 </manifest>

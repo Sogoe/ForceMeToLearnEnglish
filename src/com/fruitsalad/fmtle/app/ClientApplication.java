@@ -1,9 +1,9 @@
 package com.fruitsalad.fmtle.app;
 
-import com.fruitsalad.fmtle.utils.DataBaseHelper;
-
 import android.app.Application;
 import android.graphics.Typeface;
+
+import com.fruitsalad.fmtle.utils.DataBaseHelper;
 
 public class ClientApplication extends Application {
 	private Typeface fontStyle = null;

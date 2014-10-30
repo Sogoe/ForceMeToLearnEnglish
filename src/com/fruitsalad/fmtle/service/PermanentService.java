@@ -4,20 +4,15 @@ import android.app.Service;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
-import android.util.Log;
 
 import com.fruitsalad.fmtle.receiver.ScreenOnOffReciever;
-import com.fruitsalad.fmtle.utils.DataBaseHelper;
 
 public class PermanentService extends Service {
-	private static String TAG = "Permanent Service";
 	private ScreenOnOffReciever recevier = null;
-
 	
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		Log.v(TAG, "service created!");
 	}
 
 	@Override
@@ -27,13 +22,11 @@ public class PermanentService extends Service {
 			
 			recevier = new ScreenOnOffReciever();
 			IntentFilter intentFilter = new IntentFilter();
-			intentFilter.addAction(Intent.ACTION_SCREEN_ON);
-			intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
+			intentFilter.addAction(Intent.ACTION_USER_PRESENT);
 			registerReceiver(recevier, intentFilter);
 			
-			Log.v(TAG, "broadcast registered!");
 		}
-		
+				
 		return Service.START_STICKY;
 	}
 
@@ -43,6 +36,8 @@ public class PermanentService extends Service {
 		
 		unregisterReceiver(recevier);
 		recevier = null;
+		
+		startService(new Intent(PermanentService.this, PermanentService.class));
 	}
 
 	@Override

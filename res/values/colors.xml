@@ -7,4 +7,5 @@
    <color name="english_color">#fff7b2</color>
    <color name="symbol_color">#ddffff</color>
    <color name="right_press">#501e8f0e</color>
+   <color name="setting_color">#512db1</color>
 </resources>
