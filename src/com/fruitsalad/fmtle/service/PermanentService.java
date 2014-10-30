@@ -34,24 +34,19 @@ public class PermanentService extends Service {
 			Log.v(TAG, "broadcast registered!");
 		}
 		
-		DataBaseHelper.init(getApplicationContext());
-		
 		return Service.START_STICKY;
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		//�ͷű���
+		
 		unregisterReceiver(recevier);
 		recevier = null;
-		
-		Log.v(TAG, "service is killed!");
 	}
 
 	@Override
 	public IBinder onBind(Intent intent) {
 		return null;
 	}
-
 }

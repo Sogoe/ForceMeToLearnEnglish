@@ -45,13 +45,11 @@ public class ExamDataBaseHelper extends SQLiteOpenHelper {
 	private void copyDataBase(String fileName) {
 		if(fileName == null || fileName.trim() == "")
 			return;
-		String db_path = "/data/data/" + mContext.getPackageName() + "/databases/";
-		File db_dir = new File(db_path);
-		if(!db_dir.exists())
-			db_dir.mkdirs();
-		File db_file = new File(db_dir, db_name);
+		File db_file = mContext.getDatabasePath(fileName);
 		if(db_file.exists())
 			return;
+		if(!db_file.getParentFile().exists())
+			db_file.getParentFile().mkdirs();
 		try {
 			InputStream is = mContext.getAssets().open(fileName);
 			FileOutputStream fos = new FileOutputStream(db_file);

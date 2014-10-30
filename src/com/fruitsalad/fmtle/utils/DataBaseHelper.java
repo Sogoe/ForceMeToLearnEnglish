@@ -35,6 +35,7 @@ public class DataBaseHelper {
 				i--;
 			}
 		}
+		cursor.close();
 		return list;
 	}
 
@@ -48,5 +49,12 @@ public class DataBaseHelper {
 		int col_count = cursor.getColumnIndex("COUNT");
 		int count = cursor.getInt(col_count);
 		return new English(english, symbol, chinese, count);
+	}
+	
+	public static void realse() {
+		if(db != null && db.isOpen()) {
+			db.close();
+		}
+		helper = null;
 	}
 }

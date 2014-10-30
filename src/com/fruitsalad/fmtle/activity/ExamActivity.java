@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.fruitsalad.fmtle.R;
 import com.fruitsalad.fmtle.database.English;
@@ -19,6 +20,11 @@ public class ExamActivity extends Activity implements OnClickListener {
 	private Handler handler;
 	private int[] bg_list = { R.drawable.bg1, R.drawable.bg2, R.drawable.bg3,
 			R.drawable.bg4, R.drawable.bg5, R.drawable.bg6, R.drawable.bg7 };
+	private CustomTextView skipTextView;
+	private CustomTextView choice_a;
+	private CustomTextView choice_b;
+	private CustomTextView choice_c;
+	private CustomTextView choice_d;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +43,11 @@ public class ExamActivity extends Activity implements OnClickListener {
 	}
 
 	private void init() {
-		CustomTextView skipTextView = (CustomTextView) findViewById(R.id.skip);
-		CustomTextView choice_a = (CustomTextView) findViewById(R.id.choice_a);
-		CustomTextView choice_b = (CustomTextView) findViewById(R.id.choice_b);
-		CustomTextView choice_c = (CustomTextView) findViewById(R.id.choice_c);
-		CustomTextView choice_d = (CustomTextView) findViewById(R.id.choice_d);
+		skipTextView = (CustomTextView) findViewById(R.id.skip);
+		choice_a = (CustomTextView) findViewById(R.id.choice_a);
+		choice_b = (CustomTextView) findViewById(R.id.choice_b);
+		choice_c = (CustomTextView) findViewById(R.id.choice_c);
+		choice_d = (CustomTextView) findViewById(R.id.choice_d);
 		ImageView img = (ImageView) findViewById(R.id.image_view);
 		img.setImageResource(bg_list[(int) (Math.random() * 7)]);
 		skipTextView.setOnClickListener(this);
@@ -51,7 +57,7 @@ public class ExamActivity extends Activity implements OnClickListener {
 		choice_d.setOnClickListener(this);
 
 		CustomTextView english = (CustomTextView) findViewById(R.id.english);
-		CustomTextView symbol = (CustomTextView) findViewById(R.id.symbol);
+		TextView symbol = (TextView) findViewById(R.id.symbol);
 		English[] list = DataBaseHelper.ramdomQuery();
 		right_index = (int) (Math.random() * 4);
 		english.setText(list[right_index].getEnglish());
@@ -91,6 +97,11 @@ public class ExamActivity extends Activity implements OnClickListener {
 		case R.id.choice_d:
 			if ((Integer) v.getTag() == right_index) {
 				v.setBackgroundResource(R.drawable.right_press_bg);
+				skipTextView.setClickable(false);
+				choice_a.setClickable(false);
+				choice_b.setClickable(false);
+				choice_c.setClickable(false);
+				choice_d.setClickable(false);
 				handler.postDelayed(new Runnable() {
 
 					@Override
