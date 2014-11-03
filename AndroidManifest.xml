@@ -40,6 +40,8 @@
 
         <service android:name="com.fruitsalad.fmtle.service.PermanentService" >
         </service>
+        <service android:name="com.fruitsalad.fmtle.service.CountService" >
+        </service>
     </application>
 
 </manifest>

@@ -4,5 +4,6 @@
     <string name="exam_skip_str">跳过</string>
     <string name="img_des">This is Image!</string>
     <string name="text_xx">XXX</string>
+    <string name="note">请选出正确答案解锁屏幕</string>
 
 </resources>

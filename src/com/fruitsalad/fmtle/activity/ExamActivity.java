@@ -1,6 +1,7 @@
 package com.fruitsalad.fmtle.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.fruitsalad.fmtle.R;
 import com.fruitsalad.fmtle.database.English;
+import com.fruitsalad.fmtle.service.CountService;
 import com.fruitsalad.fmtle.utils.DataBaseHelper;
 import com.fruitsalad.fmtle.view.CustomTextView;
 
@@ -25,6 +27,7 @@ public class ExamActivity extends Activity implements OnClickListener {
 	private CustomTextView choice_b;
 	private CustomTextView choice_c;
 	private CustomTextView choice_d;
+	private Boolean isWrong = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,8 @@ public class ExamActivity extends Activity implements OnClickListener {
 		choice_b.setTag(1);
 		choice_c.setTag(2);
 		choice_d.setTag(3);
+		
+		isWrong = false;
 	}
 
 	@Override
@@ -90,6 +95,8 @@ public class ExamActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.skip:
 			finish();
+			sendCountData(CountService.COUNT_SKIP);
+			overridePendingTransition(R.anim.exam_enter, R.anim.exam_exit);
 			break;
 		case R.id.choice_a:
 		case R.id.choice_b:
@@ -102,18 +109,33 @@ public class ExamActivity extends Activity implements OnClickListener {
 				choice_b.setClickable(false);
 				choice_c.setClickable(false);
 				choice_d.setClickable(false);
+				sendCountData(CountService.COUNT_RIGHT);
 				handler.postDelayed(new Runnable() {
 
 					@Override
 					public void run() {
 						finish();
+						overridePendingTransition(R.anim.exam_enter, R.anim.exam_exit);
 					}
 				}, 1000);
 			} else {
 				v.setBackgroundResource(R.drawable.wrong_press_bg);
 				v.setClickable(false);
+				sendCountData(CountService.COUNT_WRONG);
 			}
 			break;
+		}
+	}
+	
+	private void sendCountData(int cmd) {
+		if(isWrong) {
+			return;
+		}
+		Intent intent = new Intent(this, CountService.class);
+		intent.setAction(String.valueOf(cmd));
+		startService(intent);
+		if(cmd == CountService.COUNT_WRONG) {
+			isWrong = true;
 		}
 	}
 }
