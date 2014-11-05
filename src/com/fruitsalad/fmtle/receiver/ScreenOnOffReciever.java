@@ -11,10 +11,20 @@ public class ScreenOnOffReciever extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		Log.v("ScreenOnOff", "on!!!");
+		
 		if (intent.getAction() == Intent.ACTION_USER_PRESENT) {
+			Log.v("ScreenOnOff", "on!!!");
 			Intent exam_intent = new Intent(context, ExamActivity.class);
 			exam_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			exam_intent.setAction("from receive!");
+			context.startActivity(exam_intent);
+		}
+		
+		if (intent.getAction() == Intent.ACTION_SCREEN_OFF) {
+			Log.v("ScreenOnOff", "off!!!");
+			Intent exam_intent = new Intent(context, ExamActivity.class);
+			exam_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			exam_intent.setAction("from receive!");
 			context.startActivity(exam_intent);
 		}
 	}

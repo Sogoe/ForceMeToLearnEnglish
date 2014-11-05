@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,7 +21,7 @@ public class ExamActivity extends Activity implements OnClickListener {
 	private int right_index;
 	private Handler handler;
 	private int[] bg_list = { R.drawable.bg1, R.drawable.bg2, R.drawable.bg3,
-			R.drawable.bg4, R.drawable.bg5, R.drawable.bg6, R.drawable.bg7 };
+			R.drawable.bg5, R.drawable.bg6, R.drawable.bg7 };
 	private CustomTextView skipTextView;
 	private CustomTextView choice_a;
 	private CustomTextView choice_b;
@@ -33,16 +33,17 @@ public class ExamActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-		layoutParams.flags = WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
-				| WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
-		getWindow().setAttributes(layoutParams);
-
-		setContentView(R.layout.exam);
-
-		handler = new Handler();
-
-		init();
+		Log.v("ExamActivity", "on create");
+		if (getIntent().getAction() != "from receive!") {
+			Intent intent = new Intent(this, SettingsActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			startActivity(intent);
+			finish();
+		} else {
+			setContentView(R.layout.exam);
+			handler = new Handler();
+			init();
+		}
 	}
 
 	private void init() {
@@ -52,7 +53,7 @@ public class ExamActivity extends Activity implements OnClickListener {
 		choice_c = (CustomTextView) findViewById(R.id.choice_c);
 		choice_d = (CustomTextView) findViewById(R.id.choice_d);
 		ImageView img = (ImageView) findViewById(R.id.image_view);
-		img.setImageResource(bg_list[(int) (Math.random() * 7)]);
+		img.setImageResource(bg_list[(int) (Math.random() * 6)]);
 		skipTextView.setOnClickListener(this);
 		choice_a.setOnClickListener(this);
 		choice_b.setOnClickListener(this);
@@ -75,7 +76,7 @@ public class ExamActivity extends Activity implements OnClickListener {
 		choice_b.setTag(1);
 		choice_c.setTag(2);
 		choice_d.setTag(3);
-		
+
 		isWrong = false;
 	}
 
@@ -115,7 +116,8 @@ public class ExamActivity extends Activity implements OnClickListener {
 					@Override
 					public void run() {
 						finish();
-						overridePendingTransition(R.anim.exam_enter, R.anim.exam_exit);
+						overridePendingTransition(R.anim.exam_enter,
+								R.anim.exam_exit);
 					}
 				}, 1000);
 			} else {
@@ -126,15 +128,15 @@ public class ExamActivity extends Activity implements OnClickListener {
 			break;
 		}
 	}
-	
+
 	private void sendCountData(int cmd) {
-		if(isWrong) {
+		if (isWrong) {
 			return;
 		}
 		Intent intent = new Intent(this, CountService.class);
 		intent.setAction(String.valueOf(cmd));
 		startService(intent);
-		if(cmd == CountService.COUNT_WRONG) {
+		if (cmd == CountService.COUNT_WRONG) {
 			isWrong = true;
 		}
 	}

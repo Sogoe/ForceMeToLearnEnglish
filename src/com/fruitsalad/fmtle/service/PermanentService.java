@@ -13,20 +13,21 @@ public class PermanentService extends Service {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-	}
-
-	@Override
-	public int onStartCommand(Intent intent, int flags, int startId) {
 		
 		if(recevier == null) {
 			
 			recevier = new ScreenOnOffReciever();
 			IntentFilter intentFilter = new IntentFilter();
 			intentFilter.addAction(Intent.ACTION_USER_PRESENT);
+			intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
 			registerReceiver(recevier, intentFilter);
 			
 		}
-				
+	}
+
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		
 		return Service.START_STICKY;
 	}
 

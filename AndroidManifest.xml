@@ -28,7 +28,8 @@
         </activity>
         <activity
             android:name="com.fruitsalad.fmtle.activity.ExamActivity"
-            android:taskAffinity="com.fruitsalad.fmtle.activity.ExamActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity=":remote"
             android:theme="@style/ExamActivityTheme" >
         </activity>
 
@@ -38,7 +39,11 @@
             </intent-filter>
         </receiver>
 
-        <service android:name="com.fruitsalad.fmtle.service.PermanentService" >
+        <service
+            android:name="com.fruitsalad.fmtle.service.PermanentService"
+            android:process=":push" >
+        </service>
+        <service android:name="com.fruitsalad.fmtle.service.OtherService" >
         </service>
         <service android:name="com.fruitsalad.fmtle.service.CountService" >
         </service>
