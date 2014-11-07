@@ -8,4 +8,5 @@
    <color name="symbol_color">#ddffff</color>
    <color name="right_press">#501e8f0e</color>
    <color name="setting_color">#512db1</color>
+   <color name="title_stroke_color">#FAA442</color>
 </resources>

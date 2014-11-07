@@ -7,9 +7,9 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
 
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name="com.fruitsalad.fmtle.app.ClientApplication"
@@ -19,7 +19,10 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.fruitsalad.fmtle.activity.SettingsActivity"
+            android:launchMode="singleTask"
             android:theme="@style/ExamActivityTheme" >
+        </activity>
+        <activity android:name="com.fruitsalad.fmtle.activity.BlankActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,8 +32,11 @@
         <activity
             android:name="com.fruitsalad.fmtle.activity.ExamActivity"
             android:launchMode="singleTask"
-            android:taskAffinity=":remote"
+            android:noHistory="true"
             android:theme="@style/ExamActivityTheme" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
         <receiver android:name="com.fruitsalad.fmtle.receiver.BootCompleteReciever" >

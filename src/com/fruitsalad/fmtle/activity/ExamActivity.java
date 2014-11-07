@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -34,16 +35,10 @@ public class ExamActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 
 		Log.v("ExamActivity", "on create");
-		if (getIntent().getAction() != "from receive!") {
-			Intent intent = new Intent(this, SettingsActivity.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			startActivity(intent);
-			finish();
-		} else {
-			setContentView(R.layout.exam);
-			handler = new Handler();
-			init();
-		}
+		
+		setContentView(R.layout.exam);
+		handler = new Handler();
+		init();
 	}
 
 	private void init() {
@@ -67,10 +62,14 @@ public class ExamActivity extends Activity implements OnClickListener {
 		english.setText(list[right_index].getEnglish());
 		symbol.setText("[" + list[right_index].getSymbol() + "]");
 
-		choice_a.setText(list[0].getChinese());
-		choice_b.setText(list[1].getChinese());
-		choice_c.setText(list[2].getChinese());
-		choice_d.setText(list[3].getChinese());
+		choice_a.setText(Html.fromHtml("<font color='#fef5ac'> A. </font>"
+				+ list[0].getChinese()));
+		choice_b.setText(Html.fromHtml("<font color='#fef5ac'> B. </font>"
+				+ list[1].getChinese()));
+		choice_c.setText(Html.fromHtml("<font color='#fef5ac'> C. </font>"
+				+ list[2].getChinese()));
+		choice_d.setText(Html.fromHtml("<font color='#fef5ac'> D. </font>"
+				+ list[3].getChinese()));
 
 		choice_a.setTag(0);
 		choice_b.setTag(1);
@@ -139,5 +138,10 @@ public class ExamActivity extends Activity implements OnClickListener {
 		if (cmd == CountService.COUNT_WRONG) {
 			isWrong = true;
 		}
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
 	}
 }

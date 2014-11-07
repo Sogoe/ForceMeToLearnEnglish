@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.fruitsalad.fmtle.R;
 import com.fruitsalad.fmtle.service.PermanentService;
@@ -15,6 +16,9 @@ import com.fruitsalad.fmtle.view.CircleView;
 
 public class SettingsActivity extends Activity {
 	private CircleView cv = null;
+	private TextView tv_all = null;
+	private TextView tv_right = null;
+	private TextView tv_skip = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,9 @@ public class SettingsActivity extends Activity {
 		setContentView(R.layout.settings);
 
 		cv = (CircleView) findViewById(R.id.number);
+		tv_all = (TextView) findViewById(R.id.all);
+		tv_right = (TextView) findViewById(R.id.right);
+		tv_skip = (TextView) findViewById(R.id.skip);
 	}
 
 	@SuppressLint("InlinedApi")
@@ -44,5 +51,8 @@ public class SettingsActivity extends Activity {
 		int skip = spf.getInt("skip", 0);
 		int b = (right + wrong) == 0 ? 0 : right * 100 / (right + wrong);
 		cv.setNumber(b);
+		tv_all.setText(String.valueOf(right + wrong + skip));
+		tv_right.setText(String.valueOf(right));
+		tv_skip.setText(String.valueOf(skip));
 	}
 }

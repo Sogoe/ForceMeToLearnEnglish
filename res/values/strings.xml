@@ -5,5 +5,9 @@
     <string name="img_des">This is Image!</string>
     <string name="text_xx">XXX</string>
     <string name="note">请选出正确答案解锁屏幕</string>
-
+    <string name="number_title">正确率:</string>
+    <string name="all_title">总数:</string>
+    <string name="right_title">正确数:</string>
+    <string name="skip_title">跳过数:</string>
+	<string name="title">今日统计</string>
 </resources>

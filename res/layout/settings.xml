@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fmtle="http://schemas.android.com/apk/res/com.fruitsalad.fmtle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -7,23 +8,119 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_weight="3"
         android:background="@color/setting_color" >
-        
+
         <com.fruitsalad.fmtle.view.CircleView
             android:id="@+id/number"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="-30dp"
-            android:layout_marginRight="30dp"
-            android:layout_alignParentBottom="true" />
-        
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp" />
+
+        <com.fruitsalad.fmtle.view.UnderlineTextView
+            android:id="@+id/number_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/number"
+            android:layout_toLeftOf="@id/number"
+            android:paddingBottom="3dp"
+            android:paddingRight="5dp"
+            android:text="@string/number_title"
+            android:textAppearance="@android:style/TextAppearance.Small.Inverse" />
+
+        <com.fruitsalad.fmtle.view.UnderlineTextView
+            android:id="@+id/all_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@id/number"
+            android:layout_marginLeft="20dp"
+            android:paddingBottom="3dp"
+            android:paddingRight="5dp"
+            android:text="@string/all_title"
+            android:textAppearance="@android:style/TextAppearance.Small.Inverse" />
+
+        <com.fruitsalad.fmtle.view.UnderlineTextView
+            android:id="@+id/right_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/all_title"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="3dp"
+            android:paddingRight="5dp"
+            android:text="@string/right_title"
+            android:textAppearance="@android:style/TextAppearance.Small.Inverse" />
+
+        <TextView
+            android:id="@+id/right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/right_title"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/right_title"
+            android:paddingBottom="3dp"
+            android:paddingRight="5dp"
+            android:textAppearance="@android:style/TextAppearance.Small.Inverse" />
+
+        <com.fruitsalad.fmtle.view.UnderlineTextView
+            android:id="@+id/skip_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/right_title"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="3dp"
+            android:paddingRight="5dp"
+            android:text="@string/skip_title"
+            android:textAppearance="@android:style/TextAppearance.Small.Inverse" />
+
+        <TextView
+            android:id="@+id/skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/skip_title"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/skip_title"
+            android:paddingBottom="3dp"
+            android:paddingRight="5dp"
+            android:textAppearance="@android:style/TextAppearance.Small.Inverse" />
+
+        <TextView
+            android:id="@+id/all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/right"
+            android:layout_alignTop="@id/number"
+            android:paddingBottom="3dp"
+            android:paddingRight="5dp"
+            android:textAppearance="@android:style/TextAppearance.Small.Inverse" />
+
+        <com.fruitsalad.fmtle.view.UnderlineTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingBottom="8dp"
+            android:paddingRight="90dp"
+            android:layout_above="@id/number"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/title"
+            android:textAppearance="@android:style/TextAppearance.Large.Inverse"
+            fmtle:strokeWidth="5dp"
+            fmtle:strokeColor="@color/title_stroke_color" />
     </RelativeLayout>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6" >
+        android:layout_weight="7" >
     </ListView>
+
 </LinearLayout>
