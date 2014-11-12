@@ -69,7 +69,7 @@
             android:textAppearance="@android:style/TextAppearance.Small.Inverse" />
 
         <com.fruitsalad.fmtle.view.UnderlineTextView
-            android:id="@+id/skip_title"
+            android:id="@+id/wrong_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -78,16 +78,16 @@
             android:layout_marginTop="5dp"
             android:paddingBottom="3dp"
             android:paddingRight="5dp"
-            android:text="@string/skip_title"
+            android:text="@string/wrong_title"
             android:textAppearance="@android:style/TextAppearance.Small.Inverse" />
 
         <TextView
-            android:id="@+id/skip"
+            android:id="@+id/wrong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/skip_title"
+            android:layout_alignTop="@id/wrong_title"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/skip_title"
+            android:layout_toRightOf="@id/wrong_title"
             android:paddingBottom="3dp"
             android:paddingRight="5dp"
             android:textAppearance="@android:style/TextAppearance.Small.Inverse" />

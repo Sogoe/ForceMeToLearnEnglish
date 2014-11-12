@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.fruitsalad.fmtle.activity.BlankActivity;
 import com.fruitsalad.fmtle.activity.ExamActivity;
 
 public class ScreenOnOffReciever extends BroadcastReceiver {
@@ -16,15 +15,14 @@ public class ScreenOnOffReciever extends BroadcastReceiver {
 		if (intent.getAction() == Intent.ACTION_USER_PRESENT) {
 			Log.v("ScreenOnOff", "on!!!");
 			Intent exam_intent = new Intent(context, ExamActivity.class);
-			exam_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			exam_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
 			context.startActivity(exam_intent);
 		}
 		
 		if (intent.getAction() == Intent.ACTION_SCREEN_OFF) {
 			Log.v("ScreenOnOff", "off!!!");
-			Intent exam_intent = new Intent(context, BlankActivity.class);
-			exam_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			exam_intent.setAction(BlankActivity.FROM_RECEIVER);
+			Intent exam_intent = new Intent(context, ExamActivity.class);
+			exam_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
 			context.startActivity(exam_intent);
 		}
 	}

@@ -9,5 +9,8 @@
     <string name="all_title">总数:</string>
     <string name="right_title">正确数:</string>
     <string name="skip_title">跳过数:</string>
-	<string name="title">今日统计</string>
+    <string name="wrong_title">错误数:</string>
+    <string name="wrong_notice">好的，我记住了!</string>
+    <string name="title">今日统计</string>
+
 </resources>

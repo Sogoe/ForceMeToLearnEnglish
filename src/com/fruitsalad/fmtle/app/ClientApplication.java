@@ -24,6 +24,10 @@ public class ClientApplication extends Application {
 		DataBaseHelper.realse();
 	}
 	
+	/**
+	 * 获取系统自定义字体
+	 * @return 自定义字体
+	 */
 	public Typeface getFontStyle() {
 		return fontStyle;
 	}

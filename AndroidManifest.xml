@@ -32,7 +32,7 @@
         <activity
             android:name="com.fruitsalad.fmtle.activity.ExamActivity"
             android:launchMode="singleTask"
-            android:noHistory="true"
+            android:taskAffinity=":remote"
             android:theme="@style/ExamActivityTheme" >
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />

@@ -18,7 +18,7 @@ public class SettingsActivity extends Activity {
 	private CircleView cv = null;
 	private TextView tv_all = null;
 	private TextView tv_right = null;
-	private TextView tv_skip = null;
+	private TextView tv_wrong = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class SettingsActivity extends Activity {
 		cv = (CircleView) findViewById(R.id.number);
 		tv_all = (TextView) findViewById(R.id.all);
 		tv_right = (TextView) findViewById(R.id.right);
-		tv_skip = (TextView) findViewById(R.id.skip);
+		tv_wrong = (TextView) findViewById(R.id.wrong);
 	}
 
 	@SuppressLint("InlinedApi")
@@ -48,11 +48,10 @@ public class SettingsActivity extends Activity {
 				Context.MODE_PRIVATE);
 		int right = spf.getInt("right", 0);
 		int wrong = spf.getInt("wrong", 0);
-		int skip = spf.getInt("skip", 0);
 		int b = (right + wrong) == 0 ? 0 : right * 100 / (right + wrong);
 		cv.setNumber(b);
-		tv_all.setText(String.valueOf(right + wrong + skip));
+		tv_all.setText(String.valueOf(right + wrong));
 		tv_right.setText(String.valueOf(right));
-		tv_skip.setText(String.valueOf(skip));
+		tv_wrong.setText(String.valueOf(wrong));
 	}
 }
